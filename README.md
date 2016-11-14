@@ -1,2 +1,2 @@
-# RockPaperScissor
+# Computer Science Projects
 School Project
