@@ -1,0 +1,246 @@
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+class Calculator extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	private JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, plus, minus, mult,
+			div, sqr, root, equal, reset;
+	private JTextField screen;
+	private JPanel buttons;
+	private int pressed, result, last;
+	private String ram = "";
+	private Object button;
+
+	public static void main(String[] args) {
+		Calculator frame = new Calculator();
+		frame.setSize(300, 500);
+		frame.createGUI();
+		frame.setVisible(true);
+	}
+
+	private void createGUI() {
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		Container window = getContentPane();
+		window.setLayout(new BoxLayout(window, 1));
+
+		buttons = new JPanel();
+		buttons.setLayout(new GridLayout(7, 3));
+
+		screen = new JTextField(10);
+		b1 = new JButton("1");
+		b2 = new JButton("2");
+		b3 = new JButton("3");
+		b4 = new JButton("4");
+		b5 = new JButton("5");
+		b6 = new JButton("6");
+		b7 = new JButton("7");
+		b8 = new JButton("8");
+		b9 = new JButton("9");
+		b0 = new JButton("0");
+		plus = new JButton("+");
+		minus = new JButton("-");
+		mult = new JButton("x");
+		div = new JButton("÷");
+		sqr = new JButton("^2");
+		root = new JButton("√");
+		equal = new JButton("=");
+		reset = new JButton("Clear");
+
+		screen.setEditable(false);
+		b1.addActionListener(this);
+		b2.addActionListener(this);
+		b3.addActionListener(this);
+		b4.addActionListener(this);
+		b5.addActionListener(this);
+		b6.addActionListener(this);
+		b7.addActionListener(this);
+		b8.addActionListener(this);
+		b9.addActionListener(this);
+		b0.addActionListener(this);
+		plus.addActionListener(this);
+		minus.addActionListener(this);
+		mult.addActionListener(this);
+		div.addActionListener(this);
+		sqr.addActionListener(this);
+		root.addActionListener(this);
+		equal.addActionListener(this);
+		reset.addActionListener(this);
+
+		buttons.add(b1);
+		buttons.add(b2);
+		buttons.add(b3);
+
+		buttons.add(b4);
+		buttons.add(b5);
+		buttons.add(b6);
+
+		buttons.add(b7);
+		buttons.add(b8);
+		buttons.add(b9);
+
+		buttons.add(reset);
+		buttons.add(b0);
+		buttons.add(equal);
+
+		buttons.add(plus);
+		buttons.add(minus);
+		buttons.add(mult);
+
+		buttons.add(sqr);
+		buttons.add(root);
+		buttons.add(div);
+
+		window.add(screen);
+		window.add(buttons);
+
+	}
+
+	public void actionPerformed(ActionEvent event) {
+		button = event.getSource();
+		System.out.println(event.getActionCommand());
+
+		if (button == plus) {
+			pressed = Integer.parseInt(ram);
+//			result = result + pressed;
+			screen.setText(result+"");
+			ram = "";
+			last = 0;
+		}
+
+		if (button == minus) {
+			pressed = Integer.parseInt(ram);
+//			result = result - pressed;
+			screen.setText(result+"");
+			ram = "0";
+			last = 1;
+		}
+
+		if (button == mult) {
+			pressed = Integer.parseInt(ram);
+//			result = result * pressed;
+			screen.setText(result+"");
+			ram = "0";
+			last = 2;
+		}
+
+		if (button == div) {
+			pressed = Integer.parseInt(ram);
+//			result = result / pressed;
+			screen.setText(result+"");
+			ram = "0";
+			last = 3;
+		}
+
+		if (button == sqr) {
+			pressed = Integer.parseInt(ram);
+//			result = result * result;
+			screen.setText(result+"");
+			ram = "0";
+			last = 4;
+		}
+
+		if (button == root) {
+			pressed = Integer.parseInt(ram);
+//			result = (int) Math.sqrt(result);
+			screen.setText(result+"");
+			ram = "0";
+			last = 5;
+		}
+
+		if (button == equal) {
+			pressed = Integer.parseInt(ram);
+			lastPreformed();
+			screen.setText(result+"");
+			ram = "0";
+			last = 0;
+			result = 0;
+			pressed = 0;
+		}
+
+		if (button == reset) {
+			pressed = 0;
+			screen.setText("");
+			ram = "0";
+			result = 0;
+		}
+
+		if (button == b1) {
+			ram += 1;
+			screen.setText(ram);
+		}
+
+		if (button == b2) {
+			ram += 2;
+			screen.setText(ram);
+		}
+
+		if (button == b3) {
+			ram += 3;
+			screen.setText(ram);
+		}
+
+		if (button == b4) {
+			ram += 4;
+			screen.setText(ram);
+		}
+
+		if (button == b5) {
+			ram += 5;
+			screen.setText(ram);
+		}
+
+		if (button == b6) {
+			ram += 6;
+			screen.setText(ram);
+		}
+
+		if (button == b7) {
+			ram += 7;
+			screen.setText(ram);
+		}
+
+		if (button == b8) {
+			ram += 8;
+			screen.setText(ram);
+		}
+
+		if (button == b9) {
+			ram += 9;
+			screen.setText(ram);
+		}
+
+		if (button == b0) {
+			ram += 0;
+			screen.setText(ram);
+		}
+
+		System.out.println(result + " : " + ram + " : " + pressed);
+	}
+
+	private void lastPreformed() {
+		switch (last) {
+			default:
+				result = result + pressed;
+				break;
+			case 1:
+				result = result - pressed;
+				break;
+			case 2:
+				result = result * pressed;
+				break;
+			case 3:
+				result = result / pressed;
+				break;
+			case 4:
+				result = result * result;
+				break;
+			case 5:
+				result = (int) Math.sqrt(result);
+				break;
+		}
+	}
+
+}
