@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -10,7 +11,9 @@ class Calculator extends JFrame implements ActionListener {
 			div, sqr, root, equal, reset;
 	private JTextField screen;
 	private JPanel buttons;
-	private int pressed, result, last;
+	private ArrayList<String> operation = new ArrayList<String>();
+	private ArrayList<Integer> pressed = new ArrayList<Integer>();
+	private int result;
 	private String ram = "";
 	private Object button;
 
@@ -100,71 +103,78 @@ class Calculator extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent event) {
 		button = event.getSource();
-		System.out.println(event.getActionCommand());
 
 		if (button == plus) {
-			pressed = Integer.parseInt(ram);
-//			result = result + pressed;
-			screen.setText(result+"");
+			pressed.add(Integer.parseInt(ram));
+			operation.add("+");
 			ram = "";
-			last = 0;
+			screen.setText("");
 		}
 
 		if (button == minus) {
-			pressed = Integer.parseInt(ram);
-//			result = result - pressed;
-			screen.setText(result+"");
-			ram = "0";
-			last = 1;
+			pressed.add(Integer.parseInt(ram));
+			operation.add("+");
+			ram = "";
+			screen.setText("");
 		}
 
 		if (button == mult) {
-			pressed = Integer.parseInt(ram);
-//			result = result * pressed;
-			screen.setText(result+"");
-			ram = "0";
-			last = 2;
+			pressed.add(Integer.parseInt(ram));
+			operation.add("+");
+			ram = "";
+			screen.setText("");
 		}
 
 		if (button == div) {
-			pressed = Integer.parseInt(ram);
-//			result = result / pressed;
-			screen.setText(result+"");
-			ram = "0";
-			last = 3;
+			pressed.add(Integer.parseInt(ram));
+			operation.add("+");
+			ram = "";
+			screen.setText("");
 		}
 
 		if (button == sqr) {
-			pressed = Integer.parseInt(ram);
-//			result = result * result;
-			screen.setText(result+"");
-			ram = "0";
-			last = 4;
+			pressed.add(Integer.parseInt(ram));
+			operation.add("+");
+			ram = "";
+			screen.setText("");
 		}
 
 		if (button == root) {
-			pressed = Integer.parseInt(ram);
-//			result = (int) Math.sqrt(result);
-			screen.setText(result+"");
-			ram = "0";
-			last = 5;
+			pressed.add(Integer.parseInt(ram));
+			operation.add("+");
+			ram = "";
+			screen.setText("");
 		}
 
 		if (button == equal) {
-			pressed = Integer.parseInt(ram);
-			lastPreformed();
-			screen.setText(result+"");
-			ram = "0";
-			last = 0;
-			result = 0;
-			pressed = 0;
+			if (pressed.isEmpty()) return;
+
+			for (int i = 0; i < pressed.size(); i++) {
+				switch (operation.get(i)) {
+					case "+":
+						result = result + pressed.get(i);
+						break;
+					case "-":
+						result = result - pressed.get(i);
+						break;
+					case "*":
+						result = result * pressed.get(i);
+						break;
+					case "/":
+						result = result / pressed.get(i);
+						break;
+				}
+			}
+			
+			screen.setText(result + "");
 		}
 
 		if (button == reset) {
-			pressed = 0;
-			screen.setText("");
-			ram = "0";
+			pressed = null;
+			operation = null;
 			result = 0;
+			ram = "";
+			screen.setText("");
 		}
 
 		if (button == b1) {
@@ -215,31 +225,6 @@ class Calculator extends JFrame implements ActionListener {
 		if (button == b0) {
 			ram += 0;
 			screen.setText(ram);
-		}
-
-		System.out.println(result + " : " + ram + " : " + pressed);
-	}
-
-	private void lastPreformed() {
-		switch (last) {
-			default:
-				result = result + pressed;
-				break;
-			case 1:
-				result = result - pressed;
-				break;
-			case 2:
-				result = result * pressed;
-				break;
-			case 3:
-				result = result / pressed;
-				break;
-			case 4:
-				result = result * result;
-				break;
-			case 5:
-				result = (int) Math.sqrt(result);
-				break;
 		}
 	}
 
