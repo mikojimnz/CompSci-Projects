@@ -1,19 +1,21 @@
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 class Calculator extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, plus, minus, mult,
-			div, sqr, root, equal, reset;
+	private JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, plus, minus, mult, div, sqr, root, equal, reset;
 	private JTextField screen;
 	private JPanel buttons;
-	private ArrayList<String> operation = new ArrayList<String>();
-	private ArrayList<Integer> pressed = new ArrayList<Integer>();
-	private int result;
+	private int pressed, saved, result, op;
 	private String ram = "";
 	private Object button;
 
@@ -104,128 +106,144 @@ class Calculator extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		button = event.getSource();
 
-		if (button == plus) {
-			pressed.add(Integer.parseInt(ram));
-			operation.add("+");
-			ram = "";
-			screen.setText("");
-		}
-
-		if (button == minus) {
-			pressed.add(Integer.parseInt(ram));
-			operation.add("+");
-			ram = "";
-			screen.setText("");
-		}
-
-		if (button == mult) {
-			pressed.add(Integer.parseInt(ram));
-			operation.add("+");
-			ram = "";
-			screen.setText("");
-		}
-
-		if (button == div) {
-			pressed.add(Integer.parseInt(ram));
-			operation.add("+");
-			ram = "";
-			screen.setText("");
-		}
-
-		if (button == sqr) {
-			pressed.add(Integer.parseInt(ram));
-			operation.add("+");
-			ram = "";
-			screen.setText("");
-		}
-
-		if (button == root) {
-			pressed.add(Integer.parseInt(ram));
-			operation.add("+");
-			ram = "";
-			screen.setText("");
-		}
-
-		if (button == equal) {
-			if (pressed.isEmpty()) return;
-
-			for (int i = 0; i < pressed.size(); i++) {
-				switch (operation.get(i)) {
-					case "+":
-						result = result + pressed.get(i);
-						break;
-					case "-":
-						result = result - pressed.get(i);
-						break;
-					case "*":
-						result = result * pressed.get(i);
-						break;
-					case "/":
-						result = result / pressed.get(i);
-						break;
-				}
+		try {
+			if (button == plus) {
+				pressed = Integer.parseInt(ram);
+				op = 0;
+				ram = "";
+				screen.setText("");
 			}
-			
-			screen.setText(result + "");
-		}
 
-		if (button == reset) {
-			pressed = null;
-			operation = null;
-			result = 0;
-			ram = "";
-			screen.setText("");
-		}
+			if (button == minus) {
+				pressed = Integer.parseInt(ram);
+				op = 1;
+				ram = "";
+				screen.setText("");
+			}
 
-		if (button == b1) {
-			ram += 1;
-			screen.setText(ram);
-		}
+			if (button == mult) {
+				pressed = Integer.parseInt(ram);
+				op = 2;
+				ram = "";
+				screen.setText("");
+			}
 
-		if (button == b2) {
-			ram += 2;
-			screen.setText(ram);
-		}
+			if (button == div) {
+				pressed = Integer.parseInt(ram);
+				op = 3;
+				ram = "";
+				screen.setText("");
+			}
 
-		if (button == b3) {
-			ram += 3;
-			screen.setText(ram);
-		}
+			if (button == sqr) {
+				pressed = Integer.parseInt(ram);
+				op = 4;
+				ram = "";
+				screen.setText("");
+			}
 
-		if (button == b4) {
-			ram += 4;
-			screen.setText(ram);
-		}
+			if (button == root) {
+				pressed = Integer.parseInt(ram);
+				op = 5;
+				ram = "";
+				screen.setText("");
+			}
 
-		if (button == b5) {
-			ram += 5;
-			screen.setText(ram);
-		}
+			if (button == equal) {
+				if (op == 4 || op == 5)
+					ram = "0";
+				saved = Integer.parseInt(ram);
 
-		if (button == b6) {
-			ram += 6;
-			screen.setText(ram);
-		}
+				switch (op) {
+				case 0:
+					result = pressed + saved;
+					break;
+				case 1:
+					result = pressed - saved;
+					break;
+				case 2:
+					result = pressed * saved;
+					break;
+				case 3:
+					result = pressed / saved;
+					break;
+				case 4:
+					result = pressed * pressed;
+					break;
+				case 5:
+					result = (int) Math.sqrt(pressed);
+					break;
+				default:
+					return;
+				}
 
-		if (button == b7) {
-			ram += 7;
-			screen.setText(ram);
-		}
+				screen.setText(result + "");
+				pressed = 0;
+				saved = 0;
+				result = 0;
+				op = 0;
+				ram = "";
+			}
 
-		if (button == b8) {
-			ram += 8;
-			screen.setText(ram);
-		}
+			if (button == reset) {
+				pressed = 0;
+				saved = 0;
+				result = 0;
+				op = 0;
+				ram = "";
+				screen.setText("");
+			}
 
-		if (button == b9) {
-			ram += 9;
-			screen.setText(ram);
-		}
+			if (button == b1) {
+				ram += 1;
+				screen.setText(ram);
+			}
 
-		if (button == b0) {
-			ram += 0;
-			screen.setText(ram);
+			if (button == b2) {
+				ram += 2;
+				screen.setText(ram);
+			}
+
+			if (button == b3) {
+				ram += 3;
+				screen.setText(ram);
+			}
+
+			if (button == b4) {
+				ram += 4;
+				screen.setText(ram);
+			}
+
+			if (button == b5) {
+				ram += 5;
+				screen.setText(ram);
+			}
+
+			if (button == b6) {
+				ram += 6;
+				screen.setText(ram);
+			}
+
+			if (button == b7) {
+				ram += 7;
+				screen.setText(ram);
+			}
+
+			if (button == b8) {
+				ram += 8;
+				screen.setText(ram);
+			}
+
+			if (button == b9) {
+				ram += 9;
+				screen.setText(ram);
+			}
+
+			if (button == b0) {
+				ram += 0;
+				screen.setText(ram);
+			}
+		} catch (Exception e) {
 		}
 	}
-
 }
