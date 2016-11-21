@@ -7,16 +7,31 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel panel, btns;
 	private JButton randBtn;
-	private ImageIcon boobooH, monkeyH;
+	private static ImageIcon h1, h2, h3, h4, h5, b1, b2, b3, b4, b5, l1, l2, l3, l4, l5;
 	private Choice headChoice;
-	private int state = 0;
+	private int state = 0, head = 0, body = 0, legs = 0;
 
 	public static void main(String[] args) {
-
 		MixIt myMixIt = new MixIt();
 		myMixIt.setSize(750, 650);
 		myMixIt.createGUI();
 		myMixIt.setVisible(true);
+		
+		h1 = new ImageIcon("h1.png");
+		h2 = new ImageIcon("h2.png");
+		h3 = new ImageIcon("h3.png");
+		h4 = new ImageIcon("h4.png");
+		h5 = new ImageIcon("h5.png");
+		b1 = new ImageIcon("b1.png");
+		b2 = new ImageIcon("b2.png");
+		b3 = new ImageIcon("b3.png");
+		b4 = new ImageIcon("b4.png");
+		b5 = new ImageIcon("b5.png");
+		l1 = new ImageIcon("l1.png");
+		l2 = new ImageIcon("l2.png");
+		l3 = new ImageIcon("l3.png");
+		l4 = new ImageIcon("l4.png");
+		l5 = new ImageIcon("l5.png");
 	}
 
 	private void createGUI() {
@@ -47,9 +62,6 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 
 		window.add(panel);
 		window.add(btns);
-
-		boobooH = new ImageIcon("BooBooHead.jpg");
-		monkeyH = new ImageIcon("MonkeyHead.jpg");
 	}
 
 	public void actionPerformed(ActionEvent event) {
@@ -78,6 +90,8 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 					break;
 			}
 		}
+		
+		preformDraw();
 
 	}
 
@@ -102,22 +116,56 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 			}
 		}
 	}
-
-	public void randomHead() {
+	
+	private void preformDraw() {
 		Graphics g = panel.getGraphics();
 		Font text = new Font("SansSerif", Font.BOLD, 24);
+		
+		g.setColor(Color.DARK_GRAY);
+		g.fillRect(0, 0, getWidth(), getHeight());
+		
+		if (head == 0) h1.paintIcon(this, g, getWidth()/2, 10);
+		if (head == 1) h2.paintIcon(this, g, getWidth()/2, 10);
+		if (head == 2) h3.paintIcon(this, g, getWidth()/2, 10);
+		if (head == 3) h4.paintIcon(this, g, getWidth()/2, 10);
+		if (head == 4) h5.paintIcon(this, g, getWidth()/2, 10);
+		
+		if (body == 0) b1.paintIcon(this, g, getWidth()/2, 90);
+		if (body == 1) b2.paintIcon(this, g, getWidth()/2, 90);
+		if (body == 2) b3.paintIcon(this, g, getWidth()/2, 90);
+		if (body == 3) b4.paintIcon(this, g, getWidth()/2, 90);
+		if (body == 4) b5.paintIcon(this, g, getWidth()/2, 90);
+		
+		if (legs == 0) l1.paintIcon(this, g, getWidth()/2, 170);
+		if (legs == 1) l2.paintIcon(this, g, getWidth()/2, 170);
+		if (legs == 2) l3.paintIcon(this, g, getWidth()/2, 170);
+		if (legs == 3) l4.paintIcon(this, g, getWidth()/2, 170);
+		if (legs == 4) l5.paintIcon(this, g, getWidth()/2, 170);
 
-		int head = (int) (Math.random() * 2);
+		g.setFont(text);
+		g.setColor(Color.white);
+		g.drawString(" Here is your head", 200, 30);
+		g.drawString(" Here is your body", 200, 100);
+		g.drawString(" Here is your lges", 200, 180);
+	}
+
+	public void randomHead() {
+		Graphics g = panel.getGraphics();		
+		head = (int) (Math.random() * 4);
 		System.out.println("random head = " + head);
 
 		for (int i = 0; i < 30; i++) {
 			g.setColor(Color.DARK_GRAY);
 			g.fillRect(0, 0, getWidth(), getHeight());
 
-			if (i % 2 == 0)
-				monkeyH.paintIcon(this, g, 100, 10);
-			if (i % 2 == 1)
-				boobooH.paintIcon(this, g, 100, 10);
+			if (i % 2 == 0) h1.paintIcon(this, g, getWidth()/2, 10);
+			if (i % 3 == 0) h2.paintIcon(this, g, getWidth()/2, 10);
+			if (i % 4 == 0) h3.paintIcon(this, g, getWidth()/2, 10);
+			if (i % 5 == 0) {
+				h4.paintIcon(this, g, getWidth()/2, 10);
+			} else {
+				h5.paintIcon(this, g, getWidth()/2, 10);
+			}
 
 			try {
 				Thread.sleep(100);
@@ -126,17 +174,57 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 			}
 		}
 
-		if (head == 0) {
-			boobooH.paintIcon(this, g, 100, 10);
+	}
+	
+	public void randomBody() {
+		Graphics g = panel.getGraphics();
+		body = (int) (Math.random() * 4);
+		System.out.println("random body = " + body);
+		
+		for (int i = 0; i < 30; i++) {
+			g.setColor(Color.DARK_GRAY);
+			g.fillRect(0, 0, getWidth(), getHeight());
+
+			if (i % 2 == 0) b1.paintIcon(this, g, getWidth()/2, 90);
+			if (i % 3 == 0) b2.paintIcon(this, g, getWidth()/2, 90);
+			if (i % 4 == 0) b3.paintIcon(this, g, getWidth()/2, 90);
+			if (i % 5 == 0) {
+				b4.paintIcon(this, g, getWidth()/2, 10);
+			} else {
+				b5.paintIcon(this, g, getWidth()/2, 10);
+			}
+
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
+	}
+	
+	public void randomLegs() {
+		Graphics g = panel.getGraphics();
+		legs = (int) (Math.random() * 4);
+		System.out.println("random legs = " + legs);
+		
+		for (int i = 0; i < 30; i++) {
+			g.setColor(Color.DARK_GRAY);
+			g.fillRect(0, 0, getWidth(), getHeight());
 
-		if (head == 1) {
-			monkeyH.paintIcon(this, g, 100, 10);
-		}
+			if (i % 2 == 0) l1.paintIcon(this, g, getWidth()/2, 170);
+			if (i % 3 == 0) l2.paintIcon(this, g, getWidth()/2, 170);
+			if (i % 4 == 0) l3.paintIcon(this, g, getWidth()/2, 170);
+			if (i % 5 == 0) {
+				l4.paintIcon(this, g, getWidth()/2, 10);
+			} else {
+				l5.paintIcon(this, g, getWidth()/2, 10);
+			}
 
-		g.setFont(text);
-		g.setColor(Color.white);
-		g.drawString(" Here is your head", 200, 30);
-
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}		
 	}
 }
