@@ -158,9 +158,9 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 			g.setColor(Color.DARK_GRAY);
 			g.fillRect(0, 0, getWidth(), getHeight());
 
-			if (i % 2 == 0) h1.paintIcon(this, g, getWidth()/2, 10);
-			if (i % 3 == 0) h2.paintIcon(this, g, getWidth()/2, 10);
-			if (i % 4 == 0) h3.paintIcon(this, g, getWidth()/2, 10);
+			if (i % 2 == 0) h1.paintIcon(this, g, getWidth()/2+100, 10);
+			if (i % 3 == 0) h2.paintIcon(this, g, getWidth()/2+100, 10);
+			if (i % 4 == 0) h3.paintIcon(this, g, getWidth()/2+100, 10);
 			if (i % 5 == 0) {
 				h4.paintIcon(this, g, getWidth()/2, 10);
 			} else {
