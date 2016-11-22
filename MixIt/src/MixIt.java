@@ -114,6 +114,8 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 			if (headString.equals("All")) {
 				state = 3;
 			}
+			
+			preformDraw();
 		}
 	}
 	
@@ -124,29 +126,29 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		
-		if (head == 0) h1.paintIcon(this, g, getWidth()/2, 10);
-		if (head == 1) h2.paintIcon(this, g, getWidth()/2, 10);
-		if (head == 2) h3.paintIcon(this, g, getWidth()/2, 10);
-		if (head == 3) h4.paintIcon(this, g, getWidth()/2, 10);
-		if (head == 4) h5.paintIcon(this, g, getWidth()/2, 10);
+		if (head == 0) h1.paintIcon(this, g, getWidth()/2-100, 10);
+		if (head == 1) h2.paintIcon(this, g, getWidth()/2-100, 10);
+		if (head == 2) h3.paintIcon(this, g, getWidth()/2-100, 10);
+		if (head == 3) h4.paintIcon(this, g, getWidth()/2-100, 10);
+		if (head == 4) h5.paintIcon(this, g, getWidth()/2-100, 10);
 		
-		if (body == 0) b1.paintIcon(this, g, getWidth()/2, 90);
-		if (body == 1) b2.paintIcon(this, g, getWidth()/2, 90);
-		if (body == 2) b3.paintIcon(this, g, getWidth()/2, 90);
-		if (body == 3) b4.paintIcon(this, g, getWidth()/2, 90);
-		if (body == 4) b5.paintIcon(this, g, getWidth()/2, 90);
+		if (body == 0) b1.paintIcon(this, g, getWidth()/2-100, 90);
+		if (body == 1) b2.paintIcon(this, g, getWidth()/2-100, 90);
+		if (body == 2) b3.paintIcon(this, g, getWidth()/2-100, 90);
+		if (body == 3) b4.paintIcon(this, g, getWidth()/2-100, 90);
+		if (body == 4) b5.paintIcon(this, g, getWidth()/2-100, 90);
 		
-		if (legs == 0) l1.paintIcon(this, g, getWidth()/2, 170);
-		if (legs == 1) l2.paintIcon(this, g, getWidth()/2, 170);
-		if (legs == 2) l3.paintIcon(this, g, getWidth()/2, 170);
-		if (legs == 3) l4.paintIcon(this, g, getWidth()/2, 170);
-		if (legs == 4) l5.paintIcon(this, g, getWidth()/2, 170);
+		if (legs == 0) l1.paintIcon(this, g, getWidth()/2-100, 170);
+		if (legs == 1) l2.paintIcon(this, g, getWidth()/2-100, 170);
+		if (legs == 2) l3.paintIcon(this, g, getWidth()/2-100, 170);
+		if (legs == 3) l4.paintIcon(this, g, getWidth()/2-100, 170);
+		if (legs == 4) l5.paintIcon(this, g, getWidth()/2-100, 170);
 
 		g.setFont(text);
 		g.setColor(Color.white);
-		g.drawString(" Here is your head", 200, 30);
-		g.drawString(" Here is your body", 200, 100);
-		g.drawString(" Here is your lges", 200, 180);
+		g.drawString(" Here is your head", 400, 30);
+		g.drawString(" Here is your body", 400, 100);
+		g.drawString(" Here is your lges", 400, 180);
 	}
 
 	public void randomHead() {
@@ -158,17 +160,17 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 			g.setColor(Color.DARK_GRAY);
 			g.fillRect(0, 0, getWidth(), getHeight());
 
-			if (i % 2 == 0) h1.paintIcon(this, g, getWidth()/2+100, 10);
-			if (i % 3 == 0) h2.paintIcon(this, g, getWidth()/2+100, 10);
-			if (i % 4 == 0) h3.paintIcon(this, g, getWidth()/2+100, 10);
+			if (i % 2 == 0) h1.paintIcon(this, g, getWidth()/2-100, 10);
+			if (i % 3 == 0) h2.paintIcon(this, g, getWidth()/2-100, 10);
+			if (i % 4 == 0) h3.paintIcon(this, g, getWidth()/2-100, 10);
 			if (i % 5 == 0) {
-				h4.paintIcon(this, g, getWidth()/2, 10);
+				h4.paintIcon(this, g, getWidth()/2-100, 10);
 			} else {
-				h5.paintIcon(this, g, getWidth()/2, 10);
+				h5.paintIcon(this, g, getWidth()/2-100, 10);
 			}
 
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -185,17 +187,17 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 			g.setColor(Color.DARK_GRAY);
 			g.fillRect(0, 0, getWidth(), getHeight());
 
-			if (i % 2 == 0) b1.paintIcon(this, g, getWidth()/2, 90);
-			if (i % 3 == 0) b2.paintIcon(this, g, getWidth()/2, 90);
-			if (i % 4 == 0) b3.paintIcon(this, g, getWidth()/2, 90);
+			if (i % 2 == 0) b1.paintIcon(this, g, getWidth()/2-100, 90);
+			if (i % 3 == 0) b2.paintIcon(this, g, getWidth()/2-100, 90);
+			if (i % 4 == 0) b3.paintIcon(this, g, getWidth()/2-100, 90);
 			if (i % 5 == 0) {
-				b4.paintIcon(this, g, getWidth()/2, 10);
+				b4.paintIcon(this, g, getWidth()/2-100, 90);
 			} else {
-				b5.paintIcon(this, g, getWidth()/2, 10);
+				b5.paintIcon(this, g, getWidth()/2-100, 90);
 			}
 
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -211,17 +213,17 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 			g.setColor(Color.DARK_GRAY);
 			g.fillRect(0, 0, getWidth(), getHeight());
 
-			if (i % 2 == 0) l1.paintIcon(this, g, getWidth()/2, 170);
-			if (i % 3 == 0) l2.paintIcon(this, g, getWidth()/2, 170);
-			if (i % 4 == 0) l3.paintIcon(this, g, getWidth()/2, 170);
+			if (i % 2 == 0) l1.paintIcon(this, g, getWidth()/2-100, 170);
+			if (i % 3 == 0) l2.paintIcon(this, g, getWidth()/2-100, 170);
+			if (i % 4 == 0) l3.paintIcon(this, g, getWidth()/2-100, 170);
 			if (i % 5 == 0) {
-				l4.paintIcon(this, g, getWidth()/2, 10);
+				l4.paintIcon(this, g, getWidth()/2-100, 170);
 			} else {
-				l5.paintIcon(this, g, getWidth()/2, 10);
+				l5.paintIcon(this, g, getWidth()/2-100, 170);
 			}
 
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
