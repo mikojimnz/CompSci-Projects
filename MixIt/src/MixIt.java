@@ -148,7 +148,7 @@ public class MixIt extends JFrame implements ItemListener, ActionListener {
 		g.setColor(Color.white);
 		g.drawString(" Here is your head", 400, 30);
 		g.drawString(" Here is your body", 400, 100);
-		g.drawString(" Here is your lges", 400, 180);
+		g.drawString(" Here is your legs", 400, 180);
 	}
 
 	public void randomHead() {
