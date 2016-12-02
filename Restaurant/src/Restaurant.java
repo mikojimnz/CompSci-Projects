@@ -1,3 +1,8 @@
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
 /**
  *  Restaurant Midterm Project
  *  <p>by mikojimnz</p>
@@ -5,12 +10,6 @@
  * @version 1.0
  * @since   2016-12-02
  */
-
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-
 class Restaurant extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JTextField cost, step;
