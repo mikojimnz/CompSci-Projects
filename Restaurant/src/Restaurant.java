@@ -1,11 +1,13 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -38,7 +40,7 @@ class Restaurant extends JFrame implements ActionListener {
 		frame.createGUI();
 		frame.setVisible(true);
 
-		
+		logo = new ImageIcon("logo.png");
 	}
 
 	/**
@@ -90,11 +92,26 @@ class Restaurant extends JFrame implements ActionListener {
 		bannerMisc.setPreferredSize(new Dimension(300, getHeight()));
 		bannerMisc.setBackground(new Color(255, 215, 145));
 
-		window.add(welcome, BorderLayout.CENTER);
+		window.add(screen(), BorderLayout.CENTER);
 		window.add(header, BorderLayout.NORTH);
 		window.add(footer, BorderLayout.SOUTH);
 		window.add(bannerTotal, BorderLayout.WEST);
 		window.add(bannerMisc, BorderLayout.EAST);
+	}
+
+	private Component screen() {
+		switch(screenProgression) {
+		default:
+			return welcome;
+		case 1:
+			return frameFood;
+		case 2:
+			return frameSides;
+		case 3:
+			return frameDrinks;
+		case 4:
+			return frameTotal;
+		}
 	}
 
 	/**
