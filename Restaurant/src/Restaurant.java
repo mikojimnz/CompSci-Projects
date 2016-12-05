@@ -3,7 +3,9 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,53 +27,74 @@ public class Restaurant extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JButton start;
 	private JTextField cost, step;
-	private JPanel welcome, frameFood, frameSides, frameDrinks, frameTotal, header, footer, bannerTotal, bannerMisc;
+	private JPanel welcome, frameFood, frameSides, frameDrinks, frameTotal,
+			header, footer, bannerTotal, bannerMisc;
 	private static int screenProgression = 0;
 	private double total, taxed;
-	private static ImageIcon logo, food1, food2, food3, side1, side2, side3, drink1, drink2, drink3;
+	private static ImageIcon logo, food1, food2, food3, side1, side2, side3,
+			drink1, drink2, drink3;
 
 	/**
 	 * Begin Restaurant
 	 * 
 	 * @param args
-	 *            Starting arguments
+	 *            Starting arguments.
 	 */
 	public static void main(String[] args) {
+		logo = new ImageIcon("logo.png");
 		Restaurant frame = new Restaurant();
+		frame.setTitle("Panera Bread");
 		frame.setSize(800, 600);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.createGUI();
 		frame.setVisible(true);
-
-		logo = new ImageIcon("logo.png");
 	}
 
 	/**
 	 * Creates GUI
+	 * <p>
+	 * <ul>
+	 * <li>welcome - Initial Screen
+	 * <li>frameFood - main entries
+	 * <li>frameSides - sides
+	 * <li>frameDrinks - drinks
+	 * <li>frameTotal - checkout screen
+	 * <li>header - top banner
+	 * <li>footer - bottom banner
+	 * <li>bannerTotal - left banner
+	 * <li>bannerMisc - right banner
+	 * </ul>
+	 * </p>
 	 */
-	private void createGUI() {
+	public void createGUI() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Container window = getContentPane();
 
 		window.setLayout(new BorderLayout());
 		window.setBackground(new Color(255, 215, 145));
 
-		/**
-		 * welcome - Inital Screen frameFood - main entrees frameSides - sides
-		 * frameDrinks - drinks frameTotal - checkput screen header - top banner
-		 * footer - bottom banner bannerTotal - left banner bannerMisc - right
-		 * banner
-		 */
-
 		welcome = new JPanel();
 		welcome.setPreferredSize(new Dimension(getWidth(), 100));
 		welcome.setBackground(new Color(255, 215, 145));
-		welcome.setLayout(new GridLayout(2,1));
-		welcome.add(new JLabel(new ImageIcon("logo.png")));
+		welcome.setLayout(new GridBagLayout());
+		GridBagConstraints welcomeGrid = new GridBagConstraints();
+		welcomeGrid.gridx = 1;
+		welcomeGrid.gridy = 1;
+		welcomeGrid.gridwidth = 1;
+		welcomeGrid.gridheight = 1;
+		welcomeGrid.weightx = 50;
+		welcomeGrid.weighty = 50;
+		welcomeGrid.insets = new Insets(2, 2, 2, 2);
+		welcomeGrid.anchor = GridBagConstraints.CENTER;
+		welcomeGrid.fill = GridBagConstraints.NONE;
+
 		start = new JButton("Begin New Order");
 		start.addActionListener(this);
-		start.setSize(new Dimension(welcome.getWidth()/2,welcome.getHeight()/2));
-		welcome.add(start);
+		start.setPreferredSize(new Dimension(250, 150));
+
+		welcome.add(new JLabel(new ImageIcon("logo.png")), welcomeGrid);
+		welcomeGrid.gridy = 2;
+		welcome.add(start, welcomeGrid);
 
 		frameFood = new JPanel();
 		frameFood.setBackground(new Color(255, 215, 145));
@@ -106,21 +129,20 @@ public class Restaurant extends JFrame implements ActionListener {
 		window.add(footer, BorderLayout.SOUTH);
 		window.add(bannerTotal, BorderLayout.WEST);
 		window.add(bannerMisc, BorderLayout.EAST);
-
 	}
 
 	private Component screen() {
 		switch (screenProgression) {
-		default:
-			return welcome;
-		case 1:
-			return frameFood;
-		case 2:
-			return frameSides;
-		case 3:
-			return frameDrinks;
-		case 4:
-			return frameTotal;
+			default :
+				return welcome;
+			case 1 :
+				return frameFood;
+			case 2 :
+				return frameSides;
+			case 3 :
+				return frameDrinks;
+			case 4 :
+				return frameTotal;
 		}
 	}
 
@@ -132,6 +154,8 @@ public class Restaurant extends JFrame implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent event) {
 		Object button = event.getSource();
-
+		if (button == "start") {
+			//TODO
+		}
 	}
 }
