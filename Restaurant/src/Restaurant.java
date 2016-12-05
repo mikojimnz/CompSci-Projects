@@ -3,12 +3,14 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -19,8 +21,9 @@ import javax.swing.JTextField;
  * @version 1.0
  */
 
-class Restaurant extends JFrame implements ActionListener {
+public class Restaurant extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
+	private JButton start;
 	private JTextField cost, step;
 	private JPanel welcome, frameFood, frameSides, frameDrinks, frameTotal, header, footer, bannerTotal, bannerMisc;
 	private static int screenProgression = 0;
@@ -63,6 +66,12 @@ class Restaurant extends JFrame implements ActionListener {
 		welcome = new JPanel();
 		welcome.setPreferredSize(new Dimension(getWidth(), 100));
 		welcome.setBackground(new Color(255, 215, 145));
+		welcome.setLayout(new GridLayout(2,1));
+		welcome.add(new JLabel(new ImageIcon("logo.png")));
+		start = new JButton("Begin New Order");
+		start.addActionListener(this);
+		start.setSize(new Dimension(welcome.getWidth()/2,welcome.getHeight()/2));
+		welcome.add(start);
 
 		frameFood = new JPanel();
 		frameFood.setBackground(new Color(255, 215, 145));
@@ -97,10 +106,11 @@ class Restaurant extends JFrame implements ActionListener {
 		window.add(footer, BorderLayout.SOUTH);
 		window.add(bannerTotal, BorderLayout.WEST);
 		window.add(bannerMisc, BorderLayout.EAST);
+
 	}
 
 	private Component screen() {
-		switch(screenProgression) {
+		switch (screenProgression) {
 		default:
 			return welcome;
 		case 1:
@@ -122,5 +132,6 @@ class Restaurant extends JFrame implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent event) {
 		Object button = event.getSource();
+
 	}
 }
