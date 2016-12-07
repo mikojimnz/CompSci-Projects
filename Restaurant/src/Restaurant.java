@@ -971,10 +971,10 @@ public class Restaurant extends JFrame implements ActionListener {
 		if (saladOrder != 0) salad.paintIcon(this, g, 80, 50);
 		if (grilledCheeseOrder != 0) grilledCheese.paintIcon(this, g, 0, 130);
 		if (bagelOrder != 0) bagel.paintIcon(this, g, 80, 130);
-		if (pastryOrder != 0) 	pastry.paintIcon(this, g, 0, 210);
+		if (pastryOrder != 0) pastry.paintIcon(this, g, 0, 210);
 		if (soupOrder != 0) soup.paintIcon(this, g, 80, 210);
 		if (sodaOrder != 0) soda.paintIcon(this, g, 0, 290);
 		if (latteOrder != 0) latte.paintIcon(this, g, 80, 290);
-		if (smoothieOrder != 0) 	smoothie.paintIcon(this, g, 0, 370);
+		if (smoothieOrder != 0) smoothie.paintIcon(this, g, 0, 370);
 	}
 }
