@@ -4,6 +4,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 import javax.swing.*;
+
 import java.awt.Font;
 
 /**
@@ -15,19 +16,24 @@ import java.awt.Font;
 public class Restaurant extends JFrame implements ActionListener {
 	/** Instance Variables */
 	private static final long serialVersionUID = 1L;
-	private JButton start, next, back, cancel, pay, sandwhichAdd, saladAdd, grilledCheeseAdd, bagelAdd, pastryAdd,
-			soupAdd, sodaAdd, latteAdd, smoothieAdd, sandwhichSub, saladSub, grilledCheeseSub, bagelSub, pastrySub,
-			soupSub, sodaSub, latteSub, smoothieSub;
-	private JLabel author, cost, tax, step, title, costTitle, taxTitle, checkoutTitle, checkoutCost, checkoutTaxTitle,
-			checkoutTaxCost, checkoutFinalTitle, checkoutFinalCost, sandwhichName, saladName, grilledCheeseName,
-			bagelName, pastryName, soupName, sodaName, latteName, smoothieName, sandwhichNum, saladNum,
-			grilledCheeseNum, bagelNum, pastryNum, soupNum, sodaNum, latteNum, smoothieNum;
-	private JPanel center, welcome, frameFood, frameSides, frameDrinks, frameTotal, header, footer, bannerTotal,
-			bannerOrder;
+	private JButton start, next, back, cancel, pay, sandwhichAdd, saladAdd,
+			grilledCheeseAdd, bagelAdd, pastryAdd, soupAdd, sodaAdd, latteAdd,
+			smoothieAdd, sandwhichSub, saladSub, grilledCheeseSub, bagelSub,
+			pastrySub, soupSub, sodaSub, latteSub, smoothieSub;
+	private JLabel author, cost, tax, step, title, costTitle, taxTitle,
+			checkoutTitle, checkoutCost, checkoutTaxTitle, checkoutTaxCost,
+			checkoutFinalTitle, checkoutFinalCost, sandwhichName, saladName,
+			grilledCheeseName, bagelName, pastryName, soupName, sodaName,
+			latteName, smoothieName, sandwhichNum, saladNum, grilledCheeseNum,
+			bagelNum, pastryNum, soupNum, sodaNum, latteNum, smoothieNum;
+	private JPanel center, welcome, frameFood, frameSides, frameDrinks,
+			frameTotal, header, footer, bannerTotal, bannerOrder;
 	private double total;
-	private int frame = 0, sandwhichOrder = 0, saladOrder = 0, grilledCheeseOrder = 0, bagelOrder = 0, pastryOrder = 0,
+	private int frame = 0, sandwhichOrder = 0, saladOrder = 0,
+			grilledCheeseOrder = 0, bagelOrder = 0, pastryOrder = 0,
 			soupOrder = 0, sodaOrder = 0, latteOrder = 0, smoothieOrder = 0;
-	private static ImageIcon sandwhich, salad, grilledCheese, bagel, pastry, soup, soda, latte, smoothie;
+	private static ImageIcon sandwhich, salad, grilledCheese, bagel, pastry,
+			soup, soda, latte, smoothie;
 
 	/**
 	 * Begin Restaurant and define {@link ImageIcon ImageIcons}.
@@ -36,7 +42,7 @@ public class Restaurant extends JFrame implements ActionListener {
 	 *            Starting arguments.
 	 */
 	public static void main(String[] args) {
-		/**Load food thumb nails*/
+		/** Load food thumb nails */
 		sandwhich = new ImageIcon("chipotle-chicken-75.jpg");
 		salad = new ImageIcon("garden-chicken-wonton-75.jpg");
 		grilledCheese = new ImageIcon("grilled-cheese-75.jpg");
@@ -47,7 +53,7 @@ public class Restaurant extends JFrame implements ActionListener {
 		latte = new ImageIcon("pumpkin-spice-75.jpg");
 		smoothie = new ImageIcon("superfruit-smoothie-75.jpg");
 
-		/**Begin GUI*/
+		/** Begin GUI */
 		Restaurant frame = new Restaurant();
 		frame.setTitle("Panera Bread");
 		frame.setSize(800, 600);
@@ -182,7 +188,7 @@ public class Restaurant extends JFrame implements ActionListener {
 		soupSub.setBackground(new Color(150, 54, 32));
 		start.setBackground(new Color(92, 114, 50));
 		welcome.setBackground(new Color(255, 215, 145));
-		
+
 		/** Set LayoutManager of JPanels */
 		window.setBackground(new Color(255, 215, 145));
 		center.setLayout(new CardLayout());
@@ -485,19 +491,22 @@ public class Restaurant extends JFrame implements ActionListener {
 		taxTitle.setFont(new Font("Arial", Font.BOLD, 30));
 		title.setFont(new Font("Arial", Font.BOLD, 35));
 
-		/**Add welcome components */
+		/** Add welcome components */
 		welcome.add(new JLabel(new ImageIcon("logo.png")), welcomeGrid);
 		welcomeGrid.gridy = 2;
 		welcome.add(author, welcomeGrid);
 		welcomeGrid.gridy = 3;
 		welcome.add(start, welcomeGrid);
 
-		/**Add frameFood components */
-		frameFood.add(new JLabel(new ImageIcon("chipotle-chicken.jpg")), foodGrid);
+		/** Add frameFood components */
+		frameFood.add(new JLabel(new ImageIcon("chipotle-chicken.jpg")),
+				foodGrid);
 		foodGrid.gridx = 2;
-		frameFood.add(new JLabel(new ImageIcon("garden-chicken-wonton.jpg")), foodGrid);
+		frameFood.add(new JLabel(new ImageIcon("garden-chicken-wonton.jpg")),
+				foodGrid);
 		foodGrid.gridx = 3;
-		frameFood.add(new JLabel(new ImageIcon("grilled-cheese.jpg")), foodGrid);
+		frameFood
+				.add(new JLabel(new ImageIcon("grilled-cheese.jpg")), foodGrid);
 		foodGrid.gridx = 1;
 		foodGrid.gridy = 2;
 		frameFood.add(sandwhichName, foodGrid);
@@ -527,10 +536,11 @@ public class Restaurant extends JFrame implements ActionListener {
 		foodGrid.gridx = 3;
 		frameFood.add(grilledCheeseSub, foodGrid);
 
-		/**Add frameSides components */
+		/** Add frameSides components */
 		frameSides.add(new JLabel(new ImageIcon("bagel.jpg")), sideGrid);
 		sideGrid.gridx = 2;
-		frameSides.add(new JLabel(new ImageIcon("cherry-pastry.jpg")), sideGrid);
+		frameSides
+				.add(new JLabel(new ImageIcon("cherry-pastry.jpg")), sideGrid);
 		sideGrid.gridx = 3;
 		frameSides.add(new JLabel(new ImageIcon("french-onion.jpg")), sideGrid);
 		sideGrid.gridx = 1;
@@ -562,12 +572,14 @@ public class Restaurant extends JFrame implements ActionListener {
 		sideGrid.gridx = 3;
 		frameSides.add(soupSub, sideGrid);
 
-		/**Add frameDrinks components */
+		/** Add frameDrinks components */
 		frameDrinks.add(new JLabel(new ImageIcon("pepsi.jpg")), drinkGrid);
 		drinkGrid.gridx = 2;
-		frameDrinks.add(new JLabel(new ImageIcon("pumpkin-spice.jpg")), drinkGrid);
+		frameDrinks.add(new JLabel(new ImageIcon("pumpkin-spice.jpg")),
+				drinkGrid);
 		drinkGrid.gridx = 3;
-		frameDrinks.add(new JLabel(new ImageIcon("superfruit-smoothie.jpg")), drinkGrid);
+		frameDrinks.add(new JLabel(new ImageIcon("superfruit-smoothie.jpg")),
+				drinkGrid);
 		drinkGrid.gridx = 1;
 		drinkGrid.gridy = 2;
 		frameDrinks.add(sodaName, drinkGrid);
@@ -597,7 +609,7 @@ public class Restaurant extends JFrame implements ActionListener {
 		drinkGrid.gridx = 3;
 		frameDrinks.add(smoothieSub, drinkGrid);
 
-		/**Add frameTotal components */
+		/** Add frameTotal components */
 		frameTotal.add(checkoutTitle, totalGrid);
 		totalGrid.gridx = 2;
 		frameTotal.add(checkoutCost, totalGrid);
@@ -614,25 +626,25 @@ public class Restaurant extends JFrame implements ActionListener {
 		totalGrid.gridx = 1;
 		totalGrid.gridy = 4;
 		frameTotal.add(pay, totalGrid);
-		
-		/**Add header components */
+
+		/** Add header components */
 		header.add(title);
 
-		/**Add footer components */
+		/** Add footer components */
 		footer.add(back, footerGrid);
 		footerGrid.gridx = 2;
 		footer.add(step, footerGrid);
 		footerGrid.gridx = 3;
 		footer.add(next, footerGrid);
 
-		/**Add bannerTotal components */
+		/** Add bannerTotal components */
 		bannerTotal.add(costTitle);
 		bannerTotal.add(cost);
 		bannerTotal.add(taxTitle);
 		bannerTotal.add(tax);
 		bannerTotal.add(cancel);
 
-		/**Add add cards to center (@link CardLayout CardLayout}*/
+		/** Add add cards to center (@link CardLayout CardLayout} */
 		center.add(welcome);
 		center.add(frameFood);
 		center.add(frameSides);
@@ -700,64 +712,64 @@ public class Restaurant extends JFrame implements ActionListener {
 		/** Moves to next frame or restarts program */
 		if (e.getSource() == next) {
 			switch (frame) {
-			case 1:
-				cardLayout.next(center);
-				frame++;
-				title.setText("Choose Your Sides");
-				step.setText(" Step 2 of 4 ");
-				break;
-			case 2:
-				cardLayout.next(center);
-				frame++;
-				title.setText("Choose Your Drinks");
-				step.setText(" Step 3 of 4 ");
-				break;
-			case 3:
-				cardLayout.next(center);
-				frame++;
-				title.setText("Checkout");
-				step.setText(" Step 4 of 4 ");
-				next.setText("New Order");
-				costTitle.setVisible(false);
-				cost.setVisible(false);
-				cancel.setVisible(false);
-				break;
-			case 4:
-				cancel.doClick();
-				break;
+				case 1 :
+					cardLayout.next(center);
+					frame++;
+					title.setText("Choose Your Sides");
+					step.setText(" Step 2 of 4 ");
+					break;
+				case 2 :
+					cardLayout.next(center);
+					frame++;
+					title.setText("Choose Your Drinks");
+					step.setText(" Step 3 of 4 ");
+					break;
+				case 3 :
+					cardLayout.next(center);
+					frame++;
+					title.setText("Checkout");
+					step.setText(" Step 4 of 4 ");
+					next.setText("New Order");
+					costTitle.setVisible(false);
+					cost.setVisible(false);
+					cancel.setVisible(false);
+					break;
+				case 4 :
+					cancel.doClick();
+					break;
 			}
 		}
 
 		/** Moves back a frame or restarts programs */
 		if (e.getSource() == back) {
 			switch (frame) {
-			case 0:
-				break;
-			case 1:
-				cancel.doClick();
-				break;
-			case 2:
-				frame--;
-				cardLayout.previous(center);
-				title.setText("Choose Your Entrées");
-				step.setText(" Step 1 of 4 ");
-				break;
-			case 3:
-				frame--;
-				cardLayout.previous(center);
-				title.setText("Choose Your Sides");
-				step.setText(" Step 2 of 4 ");
-				break;
-			case 4:
-				frame--;
-				cardLayout.previous(center);
-				title.setText("Choose Your Drinks");
-				step.setText(" Step 3 of 4 ");
-				next.setText("Continue");
-				costTitle.setVisible(true);
-				cost.setVisible(true);
-				cancel.setVisible(true);
-				break;
+				case 0 :
+					break;
+				case 1 :
+					cancel.doClick();
+					break;
+				case 2 :
+					frame--;
+					cardLayout.previous(center);
+					title.setText("Choose Your Entrées");
+					step.setText(" Step 1 of 4 ");
+					break;
+				case 3 :
+					frame--;
+					cardLayout.previous(center);
+					title.setText("Choose Your Sides");
+					step.setText(" Step 2 of 4 ");
+					break;
+				case 4 :
+					frame--;
+					cardLayout.previous(center);
+					title.setText("Choose Your Drinks");
+					step.setText(" Step 3 of 4 ");
+					next.setText("Continue");
+					costTitle.setVisible(true);
+					cost.setVisible(true);
+					cancel.setVisible(true);
+					break;
 			}
 		}
 
@@ -944,7 +956,11 @@ public class Restaurant extends JFrame implements ActionListener {
 			smoothieNum.setText(smoothieOrder + "");
 		}
 
-		updateOrder();
+//		if (sandwhichOrder == 1 && saladOrder == 2 && grilledCheeseOrder == 3
+//				&& bagelOrder == 4 && pastryOrder == 5 && soupOrder == 6
+//				&& sodaOrder == 7 && latteOrder == 8 && smoothieOrder == 9) {
+//			JOptionPane.showMessageDialog(this, "SECRET MENU!");
+//		}
 	}
 
 	/**
@@ -958,8 +974,9 @@ public class Restaurant extends JFrame implements ActionListener {
 		Double finalCost = Double.parseDouble(df.format(total + tax));
 		cost.setText("$" + total); // Set cost text
 		checkoutCost.setText("$" + total); // Set checkoutCost text
-		checkoutTaxCost.setText("$" + tax ); // Set checkoutTaxCost text
-		checkoutFinalCost.setText("$" +finalCost); // Set checkoutFinalCost text
+		checkoutTaxCost.setText("$" + tax); // Set checkoutTaxCost text
+		checkoutFinalCost.setText("$" + finalCost); // Set checkoutFinalCost
+													// text
 	}
 
 	/**
@@ -970,14 +987,23 @@ public class Restaurant extends JFrame implements ActionListener {
 		g.setColor(new Color(255, 215, 145));
 		g.fillRect(0, 0, bannerOrder.getWidth(), bannerOrder.getHeight());
 
-		if (sandwhichOrder != 0) sandwhich.paintIcon(this, g, 0, 50);
-		if (saladOrder != 0) salad.paintIcon(this, g, 80, 50);
-		if (grilledCheeseOrder != 0) grilledCheese.paintIcon(this, g, 0, 130);
-		if (bagelOrder != 0) bagel.paintIcon(this, g, 80, 130);
-		if (pastryOrder != 0) pastry.paintIcon(this, g, 0, 210);
-		if (soupOrder != 0) soup.paintIcon(this, g, 80, 210);
-		if (sodaOrder != 0) soda.paintIcon(this, g, 0, 290);
-		if (latteOrder != 0) latte.paintIcon(this, g, 80, 290);
-		if (smoothieOrder != 0) smoothie.paintIcon(this, g, 0, 370);
+		if (sandwhichOrder != 0)
+			sandwhich.paintIcon(this, g, 0, 50);
+		if (saladOrder != 0)
+			salad.paintIcon(this, g, 80, 50);
+		if (grilledCheeseOrder != 0)
+			grilledCheese.paintIcon(this, g, 0, 130);
+		if (bagelOrder != 0)
+			bagel.paintIcon(this, g, 80, 130);
+		if (pastryOrder != 0)
+			pastry.paintIcon(this, g, 0, 210);
+		if (soupOrder != 0)
+			soup.paintIcon(this, g, 80, 210);
+		if (sodaOrder != 0)
+			soda.paintIcon(this, g, 0, 290);
+		if (latteOrder != 0)
+			latte.paintIcon(this, g, 80, 290);
+		if (smoothieOrder != 0)
+			smoothie.paintIcon(this, g, 0, 370);
 	}
 }
