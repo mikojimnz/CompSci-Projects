@@ -36,6 +36,7 @@ public class Restaurant extends JFrame implements ActionListener {
 	 *            Starting arguments.
 	 */
 	public static void main(String[] args) {
+		/**Load food thumb nails*/
 		sandwhich = new ImageIcon("chipotle-chicken-75.jpg");
 		salad = new ImageIcon("garden-chicken-wonton-75.jpg");
 		grilledCheese = new ImageIcon("grilled-cheese-75.jpg");
@@ -46,6 +47,7 @@ public class Restaurant extends JFrame implements ActionListener {
 		latte = new ImageIcon("pumpkin-spice-75.jpg");
 		smoothie = new ImageIcon("superfruit-smoothie-75.jpg");
 
+		/**Begin GUI*/
 		Restaurant frame = new Restaurant();
 		frame.setTitle("Panera Bread");
 		frame.setSize(800, 600);
@@ -668,6 +670,7 @@ public class Restaurant extends JFrame implements ActionListener {
 			costTitle.setText("Your Total Is:");
 			cost.setText("$0.0");
 			step.setText(" Step 1 of 4 ");
+			next.setText("Continue");
 			costTitle.setVisible(true);
 			cost.setVisible(true);
 			next.setVisible(true);
