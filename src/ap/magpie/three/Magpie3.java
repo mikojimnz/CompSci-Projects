@@ -1,3 +1,5 @@
+package ap.magpie.three;
+
 public class Magpie3 {
 	public String getGreeting() {
 		return "Hello, let's talk.";

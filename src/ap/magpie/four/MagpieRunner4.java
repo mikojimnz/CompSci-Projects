@@ -1,3 +1,5 @@
+package ap.magpie.four;
+
 import java.util.Scanner;
 
 public class MagpieRunner4 {

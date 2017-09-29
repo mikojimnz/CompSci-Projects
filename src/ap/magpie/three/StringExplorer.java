@@ -1,3 +1,5 @@
+package ap.magpie.three;
+
 /**
  * A program to allow students to try out different String methods.
  * 

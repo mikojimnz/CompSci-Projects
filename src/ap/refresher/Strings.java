@@ -1,3 +1,5 @@
+package ap.refresher;
+
 import java.util.Scanner;
 
 public class Strings {

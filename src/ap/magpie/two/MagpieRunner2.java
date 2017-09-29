@@ -1,3 +1,5 @@
+package ap.magpie.two;
+
 import java.util.Scanner;
 
 /**
