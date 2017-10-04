@@ -6,10 +6,8 @@ package ap.slides.arraylist16;
 import java.util.ArrayList;
 import static java.lang.System.*;
 
-public class RemoveAll
-{
-	public static void main(String args[])
-	{
+public class RemoveAll {
+	public static void main(String args[]) {
 		ArrayList<String> ray;
 		ray = new ArrayList<String>();
 
@@ -24,10 +22,14 @@ public class RemoveAll
 		ray.add("all");
 		ray.add("all");
 		out.println(ray);
-		out.println(ray.size());		
+		out.println(ray.size());
 
-		//add in a loop to remove all occurrences of all
-
+		// add in a loop to remove all occurrences of all
+		for (int i = ray.size() - 1; i >= 0; i--) {
+			if (ray.get(i).equals("all")) {
+				ray.remove(i);
+			}
+		}
 
 	}
 }
