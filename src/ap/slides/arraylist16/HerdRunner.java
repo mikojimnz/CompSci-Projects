@@ -1,17 +1,10 @@
 package ap.slides.arraylist16;
 //(c) A+ Computer Science
+
 // www.apluscompsci.com
 
-//ArrayList of User-defined Classes runner
-
-import static java.lang.System.*;
-import java.util.ArrayList;
-import java.util.Collections;
-
-public class HerdRunner
-{
-	public static void main ( String[] args )
-	{
+public class HerdRunner {
+	public static void main(String[] args) {
 		Herd bunch = new Herd();
 		bunch.add(33);
 		bunch.add(115);
@@ -20,6 +13,6 @@ public class HerdRunner
 		bunch.add(45);
 		bunch.add(96);
 		System.out.println(bunch);
-		System.out.println("Big One count = " + bunch.countBigOnes() );
-  }
+		System.out.println("Big One count = " + bunch.countBigOnes());
+	}
 }
