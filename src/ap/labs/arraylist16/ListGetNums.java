@@ -1,19 +1,23 @@
 package ap.labs.arraylist16;
-//(c) A+ Computer Science
-//www.apluscompsci.com
-//Name -
-//Date -
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class ListGetNums
-{
-	//method go will return an array
-	//containing the first 3 numbers
-	//greater than 11
-	public static List<Integer> go( List<Integer> ray )
-	{
-		return null;
+public class ListGetNums {
+	public static List<Integer> go(List<Integer> ray) {
+		ArrayList<Integer> nums = new ArrayList<Integer>();
+		
+		for (Integer i : ray) {
+			if (i > 11 && nums.size() < 3) {
+				nums.add(i);
+			}
+		}
+		
+		if (nums.isEmpty()) {
+			nums.add(0);
+			nums.remove(0);
+		}
+
+		return nums;
 	}
 }
