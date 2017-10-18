@@ -8,7 +8,7 @@ public class DeckTester {
 		int[] values = new int[] { 11, 10, 9 };
 
 		Deck d = new Deck(ranks, suits, values);
-
-		System.out.println(d.deal().toString());
+		System.out.println(d.deal());
+System.out.println(d);
 	}
 }

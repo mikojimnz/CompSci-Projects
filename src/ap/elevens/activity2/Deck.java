@@ -1,11 +1,11 @@
 package ap.elevens.activity2;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Deck {
 
-	private List<Card> cards;
+	private ArrayList<Card> cards = new ArrayList<Card>();
+	private ArrayList<Card> dealtCards = new ArrayList<Card>();
 	private ArrayList<String> ranks = new ArrayList<String>();
 	private ArrayList<String> suits = new ArrayList<String>();
 	private ArrayList<Integer> values = new ArrayList<Integer>();
@@ -15,18 +15,21 @@ public class Deck {
 		for (String i : ranks) {
 			this.ranks.add(i);
 		}
-		
+
 		for (String i : suits) {
 			this.suits.add(i);
 		}
-		
+
 		for (int i : values) {
 			this.values.add(i);
 		}
-		
+
 		for (int i = 0; i < this.ranks.size(); i++) {
-			cards.add(new Card(this.ranks.get(i), this.suits.get(i), this.values.get(i)));
+			Card c = new Card(this.ranks.get(i), this.suits.get(i), this.values.get(i));
+			cards.add(c);
 		}
+
+		this.size = cards.size();
 	}
 
 	public boolean isEmpty() {
@@ -42,10 +45,14 @@ public class Deck {
 	}
 
 	public Card deal() {
-		int random = (int) Math.random() * cards.size();
-		Card card = cards.get(random);
-		cards.remove(random);
-		return card;
+		if (this.size == 0) {
+			return null;
+		} else {
+			this.size--;
+			Card c = this.cards.remove(this.size);
+			this.dealtCards.add(c);
+			return c;
+		}
 	}
 
 	@Override
@@ -64,12 +71,12 @@ public class Deck {
 		}
 
 		rtn = rtn + "\nDealt cards: \n";
-		for (int k = cards.size() - 1; k >= size; k--) {
-			rtn = rtn + cards.get(k);
+		for (int k = dealtCards.size() - 1; k >= size; k--) {
+			rtn = rtn + dealtCards.get(k);
 			if (k != size) {
 				rtn = rtn + ", ";
 			}
-			if ((k - cards.size()) % 2 == 0) {
+			if ((k - dealtCards.size()) % 2 == 0) {
 				// Insert carriage returns so entire deck is visible on console.
 				rtn = rtn + "\n";
 			}
