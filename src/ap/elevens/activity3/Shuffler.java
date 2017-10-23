@@ -19,7 +19,7 @@ public class Shuffler {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Results of " + SHUFFLE_COUNT + " consecutive perfect shuffles:");
-		int[] values1 = { 0, 1, 2, 3 };
+		int[] values1 = { 0, 1, 2, 3, 4, 5 };
 
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			perfectShuffle(values1);
@@ -63,16 +63,20 @@ public class Shuffler {
 		int[] shuffled = new int[values.length];
 		int k = 0;
 
-		for (int j = 0; j <= (values.length - 1) / 2; j++) {
+		for (int j = 0; j < (values.length + 1) / 2; j++) {
 			shuffled[k] = values[j];
 			k += 2;
 		}
 
 		k = 1;
 
-		for (int j = (values.length - 1) / 2; j < values.length - 1; j++) {
+		for (int j = (values.length + 1) / 2; j < values.length; j++) {
 			shuffled[k] = values[j];
 			k += 2;
+		}
+
+		for (int i = 0; i < shuffled.length; i++) {
+			values[i] = shuffled[i];
 		}
 	}
 
@@ -97,3 +101,44 @@ public class Shuffler {
 		}
 	}
 }
+
+
+/* * Questions
+ * 1. 
+ * 
+ *  public static String flip() {
+ *  		int coin = (int) Math.Random() * 2;
+ *  		if (coin % 2 == 0) {
+ *  			return "Tails"
+ *  		} else {
+ *  			return "Heads"
+ *  		}
+ *  		
+ *  }
+ *  
+ *  2.
+ *  
+ *  public static boolean arePermutations(int[] a, int[] b) {
+ *  		int sum1 = 0;
+ *  		int sum2 = 0;
+ *  
+ *  		for (int i : a) {
+ *  			sum1 += i;
+ *  		}
+ *  
+ *  		for (int i : b) {
+ *  			sum2 += i;
+ *  		}
+ *  
+ *  		if (sum1 == sum2) {
+ *  			return true;
+ *  		} else {
+ *  			return false;
+ *  		}
+ *  
+ *  }
+ *  
+ *  3. none
+ *  
+ *  
+*/
