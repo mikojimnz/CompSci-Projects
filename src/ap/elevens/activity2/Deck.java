@@ -25,7 +25,12 @@ public class Deck {
 	}
 
 	public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		for (int i = cards.size() -1 ; i > 1; i--) {
+			int rand = (int) Math.random() * i;
+			Card temp = cards.get(i);
+			cards.set(i, cards.get(rand));
+			cards.set(rand, temp);
+		}
 	}
 
 	public Card deal() {

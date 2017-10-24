@@ -35,7 +35,7 @@ public class Shuffler {
 		System.out.println();
 
 		System.out.println("Results of " + SHUFFLE_COUNT + " consecutive efficient selection shuffles:");
-		int[] values2 = { 0, 1, 2, 3 };
+		int[] values2 = { 1,2,3,4 };
 
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			selectionShuffle(values2);
@@ -93,7 +93,7 @@ public class Shuffler {
 	 *            is an array of integers simulating cards to be shuffled.
 	 */
 	public static void selectionShuffle(int[] values) {
-		for (int i = values.length - 1; i > 1; i--) {
+		for (int i = values.length - 1; i >= 1; i--) {
 			int rand = (int) Math.random() * i;
 			int temp = values[i];
 			values[i] = values[rand];
@@ -102,43 +102,28 @@ public class Shuffler {
 	}
 }
 
-
-/* * Questions
- * 1. 
+/*
+ * * Questions 1.
  * 
- *  public static String flip() {
- *  		int coin = (int) Math.Random() * 2;
- *  		if (coin % 2 == 0) {
- *  			return "Tails"
- *  		} else {
- *  			return "Heads"
- *  		}
- *  		
- *  }
- *  
- *  2.
- *  
- *  public static boolean arePermutations(int[] a, int[] b) {
- *  		int sum1 = 0;
- *  		int sum2 = 0;
- *  
- *  		for (int i : a) {
- *  			sum1 += i;
- *  		}
- *  
- *  		for (int i : b) {
- *  			sum2 += i;
- *  		}
- *  
- *  		if (sum1 == sum2) {
- *  			return true;
- *  		} else {
- *  			return false;
- *  		}
- *  
- *  }
- *  
- *  3. none
- *  
- *  
-*/
+ * public static String flip() { int coin = (int) Math.Random() * 2; if (coin %
+ * 2 == 0) { return "Tails" } else { return "Heads" }
+ * 
+ * }
+ * 
+ * 2.
+ * 
+ * public static boolean arePermutations(int[] a, int[] b) { int sum1 = 0; int
+ * sum2 = 0;
+ * 
+ * for (int i : a) { sum1 += i; }
+ * 
+ * for (int i : b) { sum2 += i; }
+ * 
+ * if (sum1 == sum2) { return true; } else { return false; }
+ * 
+ * }
+ * 
+ * 3. the random integers generated would have to be 3, 2, 1, 0 to pull the last card every time and reverse the array;
+ * 
+ * 
+ */
