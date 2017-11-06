@@ -1,8 +1,6 @@
 package ap.elevens.activity9;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
@@ -33,7 +31,7 @@ public class ElevensBoard extends Board {
 	/**
 	 * Flag used to control debugging print statements.
 	 */
-	private static final boolean I_AM_DEBUGGING = true;
+	private static final boolean I_AM_DEBUGGING = false;
 
 	/**
 	 * Creates a new <code>ElevensBoard</code> instance.
@@ -78,7 +76,7 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean anotherPlayIsPossible() {
 		List<Integer> indexes = cardIndexes();
-		ArrayList<ArrayList<Integer>> possibilities = new ArrayList<ArrayList<Integer>>();
+		int possibilities = 0;
 
 		if (I_AM_DEBUGGING) {
 			System.out.println("Array Size: " + indexes.size());
@@ -87,33 +85,37 @@ public class ElevensBoard extends Board {
 		for (int i = 0; i < indexes.size(); i++) {
 			for (int j = 0; j < indexes.size(); j++) {
 				if ((cardAt(i).pointValue() + cardAt(j).pointValue()) == 11) {
-					possibilities.add(new ArrayList<Integer>(Arrays.asList(i, j)));
-				}
-			}
-		}
-
-		for (int i = 0; i < indexes.size(); i++) {
-			for (int j = 0; j < indexes.size(); j++) {
-				for (int k = 0; k < indexes.size(); k++) {
-					if ((cardAt(i).pointValue() + cardAt(j).pointValue() + cardAt(k).pointValue()) == 0) {
-						possibilities.add(new ArrayList<Integer>(Arrays.asList(i, j, k)));
+					if (I_AM_DEBUGGING) {
+						System.out.println(i + " " + j);
 					}
+					possibilities++;
 				}
 			}
 		}
 		
-		for (int i = 0; i < possibilities.size(); i++) {
-			
+		possibilities /= 2;
+
+		for (int i = 0; i < indexes.size(); i++) {
+			for (int j = 0; j < indexes.size(); j++) {
+				for (int k = 0; k < indexes.size(); k++) {
+					if (cardAt(i).rank().equals("jack") && cardAt(j).rank().equals("queen") && cardAt(k).rank().equals("king")) {
+						if (I_AM_DEBUGGING) {
+							System.out.println(i + " " + j + " " + k);
+						}
+						possibilities++;
+					}
+				}
+			}
 		}
 
 		if (I_AM_DEBUGGING) {
 			System.out.println(possibilities + "\n");
 		}
 
-		if (possibilities.isEmpty()) {
-			return false;
-		} else {
+		if (possibilities > 0) {
 			return true;
+		} else {
+			return false;
 		}
 	}
 
