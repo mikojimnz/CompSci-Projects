@@ -31,7 +31,7 @@ public class ElevensBoard extends Board {
 	/**
 	 * Flag used to control debugging print statements.
 	 */
-	private static final boolean I_AM_DEBUGGING = false;
+	private static final boolean I_AM_DEBUGGING = true;
 
 	/**
 	 * Creates a new <code>ElevensBoard</code> instance.
@@ -76,47 +76,27 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean anotherPlayIsPossible() {
 		List<Integer> indexes = cardIndexes();
-		int possibilities = 0;
 
-		if (I_AM_DEBUGGING) {
-			System.out.println("Array Size: " + indexes.size());
-		}
-
-		for (int i = 0; i < indexes.size(); i++) {
-			for (int j = 0; j < indexes.size(); j++) {
+		for (int i : indexes) {
+			for (int j : indexes) {
 				if ((cardAt(i).pointValue() + cardAt(j).pointValue()) == 11) {
-					if (I_AM_DEBUGGING) {
-						System.out.println(i + " " + j);
-					}
-					possibilities++;
+					return true;
 				}
 			}
 		}
-		
-		possibilities /= 2;
 
-		for (int i = 0; i < indexes.size(); i++) {
-			for (int j = 0; j < indexes.size(); j++) {
-				for (int k = 0; k < indexes.size(); k++) {
-					if (cardAt(i).rank().equals("jack") && cardAt(j).rank().equals("queen") && cardAt(k).rank().equals("king")) {
-						if (I_AM_DEBUGGING) {
-							System.out.println(i + " " + j + " " + k);
-						}
-						possibilities++;
+		for (int i : indexes) {
+			for (int j : indexes) {
+				for (int k : indexes) {
+					if (cardAt(i).rank().equals("jack") && cardAt(j).rank().equals("queen")
+							&& cardAt(k).rank().equals("king")) {
+						return true;
 					}
 				}
 			}
 		}
 
-		if (I_AM_DEBUGGING) {
-			System.out.println(possibilities + "\n");
-		}
-
-		if (possibilities > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return false;
 	}
 
 	/**
