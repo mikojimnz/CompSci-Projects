@@ -5,15 +5,15 @@ package ap.labs.matrices22.set1;
 
 import static java.lang.System.*;
 
-public class SpiralMatrix
+public class SprialMatrix
 {
 	//define a matrix
 
-	public SpiralMatrix()
+	public SprialMatrix()
 	{
 	}
 
-	public SpiralMatrix(int size)
+	public SprialMatrix(int size)
 	{
 	}
 	
