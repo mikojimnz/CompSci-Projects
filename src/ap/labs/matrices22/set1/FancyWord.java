@@ -1,28 +1,37 @@
 package ap.labs.matrices22.set1;
 //(c) A+ Computer Science
-//www.apluscompsci.com
-//Name -
 
-import java.util.Scanner;
-import static java.lang.System.*;
+import java.util.Arrays;
 
-public class FancyWord
-{
+public class FancyWord {
 	private String[][] mat;
 
-   public FancyWord(String s)
-	{
-		//size the matrix
+	public FancyWord(String s) {
+		mat = new String[s.length()][s.length()];
 
-		//use Arrays.fill() to fill in the matrix with spaces
+		for (String[] i : mat) {
+			Arrays.fill(i, " ");
+		}
 
-		//use a for loop to load in the letters into the matrix
-
+		for (int i = 0; i < s.length(); i++) {
+			mat[0][i] = s.substring(i, i + 1);
+//			mat[i][i] = s.substring(i, i + 1);
+//			mat[s.length()-1-i][s.length()-1-i] = s.substring(i, i + 1);
+			mat[mat.length - 1][i] = s.substring(i, i + 1);
+		}
 	}
 
-	public String toString()
-	{
-		String output="";
-		return output+"\n\n";
+	public String toString() {
+		String output = "";
+
+		for (String[] i : mat) {
+			for (String j : i) {
+				output += j;
+			}
+
+			output += "\n";
+		}
+
+		return output + "\n\n";
 	}
 }
