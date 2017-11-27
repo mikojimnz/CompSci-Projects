@@ -14,12 +14,12 @@ public class FancyWordRunner {
 		Scanner file = new Scanner(new File("src/ap/labs/matrices22/set1/fancyword.dat").getAbsoluteFile());
 		int size = file.nextInt();
 		file.nextLine();
-		
+
 		for (int i = 0; i < size; i++) {
 			String word = file.next();
 			out.println(new FancyWord(word));
 		}
-		
+
 		file.close();
 	}
 }

@@ -14,9 +14,9 @@ public class FancyWord {
 		}
 
 		for (int i = 0; i < s.length(); i++) {
+			mat[i][i] = s.substring(i, i + 1);
+			mat[s.length() - 1 - i][i] = s.substring(i, i + 1);
 			mat[0][i] = s.substring(i, i + 1);
-//			mat[i][i] = s.substring(i, i + 1);
-//			mat[s.length()-1-i][s.length()-1-i] = s.substring(i, i + 1);
 			mat[mat.length - 1][i] = s.substring(i, i + 1);
 		}
 	}
