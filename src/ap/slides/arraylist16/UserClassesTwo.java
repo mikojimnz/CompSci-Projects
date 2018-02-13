@@ -16,7 +16,7 @@ public class UserClassesTwo {
 		creatureList.add(new Creature(11, null));
 		// add 3 more creatures to creatureList
 
-		Collections.sort(creatureList); // will throw an exception until
+//		Collections.sort(creatureList); // will throw an exception until
 										// creatures are added to the array
 
 		for (Creature it : creatureList) {

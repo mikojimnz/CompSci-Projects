@@ -27,19 +27,37 @@ public class WordSearch {
 	}
 
 	public boolean isFound(String word) {
-		checkRight(word, 0, 0);
-		checkLeft(word, 0, 0);
-		checkUp(word, 0, 0);
-		checkDown(word, 0, 0);
-		checkDiagUpRight(word, 0, 0);
-		checkDiagUpLeft(word, 0, 0);
-		checkDiagDownLeft(word, 0, 0);
-		checkDiagDownRight(word, 0, 0);
+		if (checkRight(word, 0, 0))
+			return true;
+		if (checkLeft(word, 0, 0))
+			return true;
+		if (checkUp(word, 0, 0))
+			return true;
+		if (checkDown(word, 0, 0))
+			return true;
+		if (checkDiagUpRight(word, 0, 0))
+			return true;
+		if (checkDiagUpLeft(word, 0, 0))
+			return true;
+		if (checkDiagDownLeft(word, 0, 0))
+			return true;
+		if (checkDiagDownRight(word, 0, 0))
+			return true;
 
 		return false;
 	}
 
 	public boolean checkRight(String w, int r, int c) {
+		
+		for (String[] n : m) {
+			String s = n.toString();
+			for (int i = 0; i < s.length() - w.length(); i++) {
+				if (s.substring(i, i+w.length()).equals(w)) {
+					return true;
+				}
+			}
+		}
+		
 		return false;
 	}
 
